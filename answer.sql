@@ -15,3 +15,4 @@ select count(*) as Count, strftime('%m-%d-%Y', datetime(login_timestamp, 'unixep
 select avg(a.dayCount) from (select count(*) as dayCount from login_history where login_timestamp > 1527898040 group by strftime('%m-%d-%Y', datetime(login_timestamp, 'unixepoch'))) a;
 
 -- PART 2: Create a SQL query that indicates the number of status changes by card
+select cardID, count(*) from card_change_history where oldStatus != newStatus group by cardID;
